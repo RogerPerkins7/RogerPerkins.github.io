@@ -107,7 +107,7 @@
       </div>
     </div>
 
-    
+
     <div class="divider"></div>
     <div class="content-section reveal">
       <h2>MECH 307 Project Report</h2>
@@ -130,10 +130,22 @@
     <p id="clock">Loading...</p>
   </footer>
   <script>
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
-    document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
-    document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+  const cursor = document.getElementById('cursor');
+  cursor.style.opacity = '0';
+  const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  if (isTouch) {
+  cursor.style.display = 'none';
+  document.body.style.cursor = 'auto';
+  document.querySelectorAll('a, button').forEach(el => el.style.cursor = 'auto');
+      } else {
+  document.addEventListener('mousemove', e => {
+  cursor.style.opacity = '1';
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+      }, { once: false });
+  document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+      }
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
     const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: 0.1 });
