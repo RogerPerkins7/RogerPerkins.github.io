@@ -21,11 +21,7 @@
     html { scroll-behavior: smooth; font-size: 16px; }
     body { background: var(--bg); color: var(--dark); font-family: var(--body); font-weight: 400; line-height: 1.6; overflow-x: hidden; cursor: none; }
     a, button { cursor: none; }
-
-    /* CURSOR */
     #cursor { position: fixed; top: 0; left: 0; width: 32px; height: 32px; background: none; border-radius: 0; background-image: url('BA.svg'); background-size: contain; background-repeat: no-repeat; pointer-events: none; z-index: 9999; transform: translate(0%, 0%); transition: opacity 1s; }
-
-    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 3.5rem; background: rgba(247,247,245,0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color 0.3s, box-shadow 0.3s; }
     nav.scrolled { border-color: var(--border); box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
     .nav-logo { font-family: var(--display); font-weight: 800; font-size: 1.5rem; color: var(--dark); text-decoration: none; letter-spacing: -0.02em; }
@@ -35,10 +31,8 @@
     .nav-links a:hover { color: var(--accent); }
     .nav-cta { background: var(--accent) !important; color: #fff !important; padding: 0.55rem 1.4rem !important; border-radius: 50px; font-weight: 600 !important; }
     .nav-cta:hover { background: var(--accent-dark) !important; transform: translateY(-1px); display: inline-block; }
-
-    /* HERO */
-    #hero { min-height: 100vh; padding: 9rem 3.5rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; position: relative; overflow: hidden; }
-    #hero::before { content: ''; position: absolute; bottom: -10%; left: -8%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,185,84,0.12) 0%, transparent 70%); pointer-events: none; }
+    #hero { min-height: 100vh; padding: 9rem 3.5rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; bottom: -10%; left: -8%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(29,185,84,0.08) 0%, transparent 70%); pointer-events: none; }
     .dot-grid { position: absolute; display: grid; grid-template-columns: repeat(6, 8px); gap: 10px; pointer-events: none; }
     .dot-grid span { display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.35; }
     .dot-grid-tl { top: 10rem; left: 2rem; }
@@ -49,39 +43,23 @@
     .hero-headline .accent { color: var(--accent); }
     .hero-sub { font-size: 1rem; color: var(--mid); line-height: 1.75; max-width: 460px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.8s var(--ease) 0.35s forwards; }
     .hero-actions { display: flex; gap: 1rem; align-items: center; opacity: 0; animation: fadeUp 0.8s var(--ease) 0.45s forwards; }
-
-    /* BUTTONS */
     .btn-pill { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.85rem 2rem; border-radius: 50px; font-family: var(--body); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.22s var(--ease); }
     .btn-fill { background: var(--accent); color: #fff; border: 2px solid var(--accent); }
     .btn-fill:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,185,84,0.3); }
     .btn-outline { background: transparent; color: var(--dark); border: 2px solid var(--border); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-
-
-
-    /* HERO RIGHT */
-    .hero-right { position: relative; display: flex; align-items: center; justify-content: center; height: 560px; z-index: 2; }
-    .blob-main { position: absolute; width: 430px; height: 430px; top: 50%; left: 50%; transform: translate(-42%, -50%); }
-    .blob-back { position: absolute; width: 260px; height: 260px; top: 50%; left: 50%; transform: translate(-75%, -68%); }
-    .hero-photo { position: absolute; bottom: 0; left: 50%; transform: translateX(-42%); width: 100%;  object-fit: cover; object-position: top center; z-index: 3; }
-    .hero-photo-placeholder { position: absolute; bottom: 0; left: 50%; transform: translateX(-42%); width: 360px; height: 480px; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 2.5rem; }
-    .placeholder-label { background: rgba(255,255,255,0.9); backdrop-filter: blur(6px); border: 1.5px dashed var(--accent); border-radius: 12px; padding: 0.6rem 1.2rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+    .hero-right { position: relative; display: flex; align-items: center; justify-content: center; z-index: 2; }
+    .hero-photo { display: block; height: min(460px, 55vw); width: auto; max-width: 100%; object-fit: contain; border-radius: 20px; box-shadow: var(--shadow); }
     .float-card { position: absolute; background: var(--white); border-radius: 16px; box-shadow: var(--shadow); padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 0.75rem; z-index: 10; white-space: nowrap; animation: floatBob 4s ease-in-out infinite; }
-    .float-card:nth-child(3) { animation-delay: 0s; }
-    .float-card:nth-child(4) { animation-delay: 1.3s; }
-    .float-card:nth-child(5) { animation-delay: 2.1s; }
+    .float-card:nth-child(1) { animation-delay: 0s; }
+    .float-card:nth-child(2) { animation-delay: 1.3s; }
     .card-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .card-icon svg { width: 18px; height: 18px; }
     .card-icon.navy { background: #e8edf2; }
-    .card-icon.gold { background: #fef3c7; }
     .card-num { font-family: var(--display); font-weight: 800; font-size: 1.1rem; color: var(--dark); line-height: 1; }
     .card-label { font-size: 0.7rem; color: var(--muted); font-weight: 500; margin-top: 1px; }
-    .fc-projects { top: 18%; left: 2%; }
-    .fc-satisfaction { top: 32%; right: 1%; }
-    .fc-role { bottom: 14%; right: 3%; }
-    .stars { color: #f59e0b; font-size: 0.75rem; }
-
-    /* SKILLS STRIP */
+    .fc-projects { top: 6%; left: -4%; }
+    .fc-role { bottom: 6%; right: -4%; }
     #skills { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3rem 3.5rem; }
     .skills-header { font-family: var(--display); font-weight: 800; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
     .skills-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
@@ -91,44 +69,28 @@
     .skill-card-icon svg { width: 22px; height: 22px; }
     .skill-card h3 { font-family: var(--display); font-weight: 800; font-size: 1.05rem; color: var(--dark); }
     .skill-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
-
-    /* SECTIONS */
     .section-wrap { padding: 7rem 3.5rem; }
     .section-wrap.alt { background: var(--white); }
     .section-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
     .section-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); border-radius: 2px; }
     .section-title { font-family: var(--display); font-weight: 900; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--dark); margin-bottom: 1rem; }
     .section-title em { font-style: italic; color: var(--accent); }
-    .section-subtitle { font-size: 0.95rem; color: var(--muted); max-width: 520px; line-height: 1.75; margin-bottom: 3.5rem; }
-
-    /* ABOUT */
-    .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
-    .about-img-wrap { position: relative; }
-    .about-img-frame { width: 100%; aspect-ratio: 4/5; background: var(--accent-light); border-radius: 24px; overflow: hidden; }
-    .about-img-frame img { width: 100%; height: 100%; object-fit: cover; }
-    .about-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
-    .about-blob-deco { position: absolute; bottom: -1.5rem; right: -1.5rem; width: 120px; height: 120px; background: var(--accent); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; z-index: -1; opacity: 0.7; }
-    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; padding: 1.5rem; background: var(--bg); border-radius: 16px; border: 1px solid var(--border); }
-    .about-stat { text-align: center; }
-    .about-stat-num { font-family: var(--display); font-weight: 900; font-size: 2rem; color: var(--accent); line-height: 1; }
-    .about-stat-label { font-size: 0.7rem; color: var(--muted); font-weight: 500; margin-top: 3px; }
-    .about-skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 2rem; }
+    .section-subtitle { font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 3.5rem; }
+    .about-skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0 2rem; justify-content: center; }
     .skill-tag { font-size: 0.75rem; font-weight: 600; padding: 0.35rem 0.9rem; border-radius: 50px; background: var(--accent-light); color: var(--accent-dark); border: 1px solid rgba(29,185,84,0.2); }
-
-    /* WORK */
     .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
     .project-card { background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
     .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
     .project-card:nth-child(1) { grid-column: span 7; }
-  .project-card:nth-child(2) { grid-column: span 5; }
-  .project-card:nth-child(3) { grid-column: span 6; }
-  .project-card:nth-child(4) { grid-column: span 6; }
-  .project-card:nth-child(5) { grid-column: span 5; }
-  .project-card:nth-child(6) { grid-column: span 7; }
-
+    .project-card:nth-child(2) { grid-column: span 5; }
+    .project-card:nth-child(3) { grid-column: span 6; }
+    .project-card:nth-child(4) { grid-column: span 6; }
+    .project-card:nth-child(5) { grid-column: span 5; }
+    .project-card:nth-child(6) { grid-column: span 7; }
     .project-img { width: 100%; aspect-ratio: 16/10; background: var(--accent-light); overflow: hidden; position: relative; }
     .project-img-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); position: relative; }
-
+    .project-img-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .project-img-ph picture img { width: 100%; height: 100%; object-fit: cover; }
     .project-overlay { position: absolute; inset: 0; background: rgba(17,17,16,0.82); display: flex; align-items: center; justify-content: center; gap: 0.75rem; opacity: 0; transition: opacity 0.3s var(--ease); }
     .project-card:hover .project-overlay { opacity: 1; }
     .project-body { padding: 1.5rem; }
@@ -136,8 +98,6 @@
     .ptag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 0.2rem 0.65rem; border-radius: 50px; }
     .project-title { font-family: var(--display); font-weight: 800; font-size: 1.25rem; color: var(--dark); margin-bottom: 0.4rem; line-height: 1.2; }
     .project-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
-
-    /* EXPERIENCE */
     .exp-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start; }
     .exp-left { position: sticky; top: 7rem; }
     .timeline { display: flex; flex-direction: column; }
@@ -155,8 +115,6 @@
     .tl-body { font-size: 0.83rem; color: var(--mid); line-height: 1.75; }
     .tl-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
     .tl-pill { font-size: 0.6rem; font-weight: 600; padding: 0.2rem 0.65rem; background: var(--bg); border: 1px solid var(--border); border-radius: 50px; color: var(--mid); }
-
-    /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .contact-links { margin-top: 2rem; display: flex; flex-direction: column; }
     .contact-link { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--mid); font-size: 0.9rem; font-weight: 500; transition: color 0.2s, padding-left 0.25s var(--ease); }
@@ -164,41 +122,29 @@
     .contact-link:hover { color: var(--accent); padding-left: 0.75rem; }
     .contact-link-arrow { font-size: 1rem; transition: transform 0.2s; }
     .contact-link:hover .contact-link-arrow { transform: translate(3px, -3px); }
-    .form-group { margin-bottom: 1.25rem; }
-    .form-group label { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.4rem; }
-    .form-group input, .form-group textarea { width: 100%; background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; color: var(--dark); font-family: var(--body); font-size: 0.9rem; padding: 0.85rem 1.1rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; resize: none; }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(29,185,84,0.12); }
-    .form-group textarea { height: 130px; }
-    ::placeholder { color: #ccc; }
-
-    /* FOOTER */
+    button.contact-link { width: 100%; background: none; border: none; border-bottom: 1px solid var(--border); font-family: var(--body); font-size: 0.9rem; text-align: left; }
     footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 2rem 3.5rem; display: flex; justify-content: space-between; align-items: center; }
     .footer-logo { font-family: var(--display); font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; }
     .footer-logo span { color: var(--accent); }
     .footer-copy, #clock { font-size: 0.72rem; }
     .footer-acc { color: var(--accent); }
-
-    /* REVEAL */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
-
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
     @keyframes floatBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-
-    /* RESPONSIVE */
     @media (max-width: 960px) {
       nav { padding: 1.2rem 1.5rem; }
-      #hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; gap: 4rem; }
-      .hero-right { height: 420px; }
-      .blob-main { width: 320px; height: 320px; }
-      .blob-back { width: 200px; height: 200px; }
-      .hero-photo, .hero-photo-placeholder { width: 270px; height: 360px; }
+      #hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; gap: 3rem; }
+      .hero-right { justify-content: center; }
+      .hero-photo { height: min(340px, 70vw); }
+      .fc-projects { top: -2%; left: 0; }
+      .fc-role { bottom: -2%; right: 0; }
       .dot-grid-tl { display: none; }
       .skills-row { grid-template-columns: 1fr; }
-      .about-grid, .exp-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .exp-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
       .exp-left { position: static; }
       .project-card:nth-child(n) { grid-column: span 12; }
       .work-grid { grid-template-columns: 1fr; }
@@ -207,24 +153,11 @@
       footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
     }
     @media (max-width: 600px) { .nav-links { display: none; } }
-
-    button.contact-link {
-    width: 100%;
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--border);
-    font-family: var(--body);
-    font-size: 0.9rem;
-    text-align: left;
-  }
-
   </style>
 </head>
 <body>
-
   <div id="cursor"></div>
 
-  <!-- NAV -->
   <nav id="nav">
     <a href="#hero" class="nav-logo">Roger<span>.</span>Perkins</a>
     <ul class="nav-links">
@@ -235,7 +168,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="dot-grid dot-grid-tl">
       <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -248,62 +180,58 @@
       <span></span><span></span><span></span><span></span><span></span><span></span>
       <span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
-
     <div class="hero-left">
       <p class="hero-greeting">Hi, there! 👋</p>
-      <h1 class="hero-headline"> I'm
-        <span class="accent">Roger Perkins</span><br>
-
-      </h1>
+      <h1 class="hero-headline">I'm <span class="accent">Roger Perkins</span></h1>
       <p class="hero-sub">
         I'm a Colorado State University senior studying Mechanical Engineering with a concentration in Aerospace Engineering.
-        <br>Take look around to see my projects or contact me for more info!
+        <br><br>Take a look around to see my projects or contact me for more info!
       </p>
       <div class="hero-actions">
         <a href="#work" class="btn-pill btn-fill">View Projects</a>
         <a href="#contact" class="btn-pill btn-outline">Let's Discuss</a>
       </div>
     </div>
-
     <div class="hero-right">
-      <!-- Navy back blob -->
-      <svg class="blob-back" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#110B11" d="M47.5,-58.5C60.8,-46.2,69.9,-30.1,71.8,-13.3C73.7,3.5,68.4,21,58.3,34.6C48.2,48.2,33.3,57.8,16.3,63.6C-0.7,69.4,-20,71.5,-36.5,64.6C-53,57.7,-66.7,41.8,-71.5,23.6C-76.3,5.4,-72.2,-15.2,-62.1,-31.1C-52,-47,-35.9,-58.3,-19.2,-65.3C-2.5,-72.3,14.8,-75.1,29.8,-70.7C44.8,-66.3,34.2,-70.8,47.5,-58.5Z" transform="translate(100 100)" />
-      </svg>
-      <!-- Green main blob -->
-      <svg class="blob-main" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#1db954" d="M44.3,-51.5C57,-41.3,66.5,-26.2,68.8,-9.7C71.1,6.8,66.1,24.7,56.2,39.3C46.3,53.9,31.5,65.3,14.2,70.8C-3.1,76.3,-22.9,76,-37.9,67.5C-52.9,59,-63.1,42.3,-67.5,24.3C-71.9,6.3,-70.5,-13,-62.9,-28.9C-55.3,-44.8,-41.5,-57.3,-26.8,-66.3C-12.1,-75.3,3.5,-80.8,18,-77.3C32.5,-73.8,31.6,-61.7,44.3,-51.5Z" transform="translate(100 100)" />
-      </svg>
-
-      <img class="hero-photo" src="zoo circle pic.png" alt="Photo of Roger Perkins">
-      <!-- Floating cards -->
+      <img class="hero-photo" src="pictures/aboutme/zoo circle pic.png" alt="Photo of Roger Perkins">
       <div class="float-card fc-projects">
         <div class="card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1db954" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
-        <div><div class="card-num">30+</div><div class="card-label">Projects</div></div>
-      </div>
-      <div class="float-card fc-satisfaction">
-        <div class="card-icon gold">
-          <svg viewBox="0 0 24 24" fill="#f59e0b" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div><div class="card-num">4.8 <span class="stars">★★★★★</span></div><div class="card-label">Satisfaction</div></div>
+        <div><div class="card-num">6+ Projects</div><div class="card-label">and more</div></div>
       </div>
       <div class="float-card fc-role">
         <div class="card-icon navy">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a2a3a" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         </div>
-        <div><div class="card-num">Full-Stack Dev</div><div class="card-label">5 Years Experience</div></div>
+        <div><div class="card-num">Mechanical Engineering</div><div class="card-label">Aerospace Concentration · CSU</div></div>
       </div>
     </div>
   </section>
 
+  <div id="skills">
+    <p class="skills-header">What I Do</p>
+    <div class="skills-row">
+      <div class="skill-card reveal">
+        <div class="skill-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1db954" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3>CAD & Design</h3>
+        <p>Proficient in SolidWorks and Autodesk Fusion 360 for 3D modelling, assemblies, and engineering drawings.</p>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1db954" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+        <h3>Analysis & Simulation</h3>
+        <p>MATLAB, Simulink, and CFD analysis for validating designs and modelling dynamic systems.</p>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#1db954" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 12h10M12 7v10"/></svg></div>
+        <h3>Testing & Quality</h3>
+        <p>Product validation, fixture design, cleanroom procedures, and Six Sigma methodology applied in industry internships.</p>
+      </div>
+    </div>
+  </div>
 
-
-  <!-- ABOUT -->
   <section id="about" class="section-wrap">
     <div style="max-width: 100%;">
-
       <p class="section-eyebrow reveal">About Me</p>
       <h2 class="section-title reveal">Some things to know about me...</h2>
       <p class="section-subtitle reveal" style="max-width: 100%;">
@@ -314,145 +242,145 @@
         as dodgeball and volleyball. In my free time, I like to hike and camp like many
         Colorado natives as well as hit the gym.
       </p>
-
-
-
       <div class="about-skills-list reveal reveal-delay-2">
-        <span class="skill-tag">Product Validation</span><span class="skill-tag">Fixture Design and Testing</span>
-        <span class="skill-tag">SolidWorks</span><span class="skill-tag">Autodesk Fusion 360</span>
-        <span class="skill-tag">MATLAB</span><span class="skill-tag">Simulink</span>
-        <span class="skill-tag">Five Whys</span><span class="skill-tag">Six Sigma Methodology</span>
-        <span class="skill-tag">Cleanroom Procedures</span><span class="skill-tag">Docker</span>
+        <span class="skill-tag">Product Validation</span>
+        <span class="skill-tag">Fixture Design and Testing</span>
+        <span class="skill-tag">SolidWorks</span>
+        <span class="skill-tag">Autodesk Fusion 360</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">Simulink</span>
+        <span class="skill-tag">Five Whys</span>
+        <span class="skill-tag">Six Sigma Methodology</span>
+        <span class="skill-tag">Cleanroom Procedures</span>
+        <span class="skill-tag">Docker</span>
       </div>
-
+      <div class="reveal reveal-delay-3" style="text-align:center;">
+        <a href="about.html" class="btn-pill btn-outline">Learn More →</a>
+      </div>
     </div>
   </section>
 
-  <!-- WORK -->
   <section id="work" class="section-wrap alt">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <p class="section-eyebrow reveal">Portfolio</p>
+        <h2 class="section-title reveal" style="margin-bottom:0">Things I've<br><em>Built</em></h2>
+      </div>
+      <!-- <a href="#" class="btn-pill btn-outline reveal" target="_blank" rel="noopener">All Projects →</a> -->
+    </div>
     <div class="work-grid">
 
-  <!-- 1: Forward Tail — top left, wide -->
-  <div class="project-card reveal">
-    <div class="project-img">
-      <div class="project-img-ph">Project Screenshot</div>
-      <div class="project-overlay">
-        <a href="#" class="btn-pill btn-fill" target="_blank">Live Site</a>
-        <a href="#" class="btn-pill btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;" target="_blank">GitHub</a>
+      <div class="project-card reveal">
+        <div class="project-img">
+          <img src="pictures/projects/f35Tail.jpg" alt="Forward Vertical Tail" style="width:100%;height:100%;object-fit:cover;">
+          <div class="project-overlay">
+            <a href="project-forward-tail.html" class="btn-pill btn-fill">View Project</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="ptag">Soon to Begin</span></div>
+          <h3 class="project-title">Forward Vertical Tail Experimentation</h3>
+          <p class="project-desc">Testing different vertical tail positions on aircraft using CFD analysis and wind tunnel testing.</p>
+        </div>
       </div>
-    </div>
-    <div class="project-body">
-      <div class="project-tags"><span class="ptag">SOON TO BEGIN</span></div>
-      <h3 class="project-title">Forward Vertical Tail Experimentation</h3>
-      <p class="project-desc">desc</p>
-    </div>
-  </div>
 
-  <!-- 2: F35 Helmet — top right, narrow -->
-  <div class="project-card reveal reveal-delay-1">
-    <div class="project-img">
-      <div class="project-img-ph">Project Screenshot</div>
-      <div class="project-overlay">
-        <a href="#" class="btn-pill btn-fill" target="_blank">Live Site</a>
-        <a href="#" class="btn-pill btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;" target="_blank">GitHub</a>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img">
+          <div class="project-img-ph">Image Coming Soon</div>
+          <div class="project-overlay">
+            <a href="project-f35-helmet.html" class="btn-pill btn-fill">View Project</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="ptag">In Progress 2026</span></div>
+          <h3 class="project-title">F35 Helmet Recreation</h3>
+          <p class="project-desc">A brief description of what this project does and the problem it solves. Keep it punchy and highlight the impact.</p>
+        </div>
       </div>
-    </div>
-    <div class="project-body">
-      <div class="project-tags"><span class="ptag">In Progress 2026</span></div>
-      <h3 class="project-title">F35 Helmet Recreation</h3>
-      <p class="project-desc">A brief description of what this project does and the problem it solves. Keep it punchy and highlight the impact.</p>
-    </div>
-  </div>
 
-  <!-- 3: Senior Design — middle left, equal -->
-  <div class="project-card reveal reveal-delay-2">
-    <div class="project-img">
-  <div class="project-img-ph">
-    <picture>
-      <source srcset="pictures/3DprinterBEFOREpicture1.webp" type="image/webp">
-      <img src="pictures/3DprinterBEFOREpicture1lq.jpg" alt="Picture of the Clay 3D Printer before alterations" style="width:100%; height:auto;">
-    </picture>
-  </div>
-  <div class="project-overlay">
-    <a href="#" class="btn-pill btn-fill" target="_blank">Live Site</a>
-    <a href="#" class="btn-pill btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;" target="_blank">GitHub</a>
-  </div>
-</div>
-    <div class="project-body">
-      <div class="project-tags"><span class="ptag">In Progress 2026</span></div>
-      <h3 class="project-title">Senior Design</h3>
-      <p class="project-desc">Describe the technical challenge and your elegant solution. Mention any noteworthy outcomes or metrics.</p>
-    </div>
-  </div>
-
-  <!-- 4: MECH 307 — middle right, equal -->
-  <div class="project-card reveal reveal-delay-3">
-    <div class="project-img">
-      <div class="project-img-ph">Project Screenshot</div>
-      <div class="project-overlay">
-        <a href="#" class="btn-pill btn-fill" target="_blank">Live Site</a>
-        <a href="#" class="btn-pill btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;" target="_blank">GitHub</a>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-img">
+          <div class="project-img-ph">
+            <picture>
+              <source srcset="pictures/projects/3DprinterBEFOREpicture1.webp" type="image/webp">
+              <img src="pictures/projects/3DprinterBEFOREpicture1lq.jpg" alt="Clay 3D Printer" style="width:100%;height:100%;object-fit:cover;">
+            </picture>
+          </div>
+          <div class="project-overlay">
+            <a href="project-senior-design.html" class="btn-pill btn-fill">View Project</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="ptag">In Progress 2026</span></div>
+          <h3 class="project-title">Senior Design</h3>
+          <p class="project-desc">Describe the technical challenge and your elegant solution. Mention any noteworthy outcomes or metrics.</p>
+        </div>
       </div>
-    </div>
-    <div class="project-body">
-      <div class="project-tags"><span class="ptag">2025</span></div>
-      <h3 class="project-title">MECH 307 Wheel</h3>
-      <p class="project-desc">My first engineering project! For my Senior Year Project in High School, I tasked myself with taking broken drone parts and putting them back together again in a custom designed frame. This project jumpstarted my knowledge on performing CFD analysis, 3D CAD Design, and validating my builds.</p>
-    </div>
-  </div>
 
-  <!-- 5: MECH 202 — bottom left, narrow (matches top right) -->
-  <div class="project-card reveal reveal-delay-1">
-    <div class="project-img">
-      <div class="project-img-ph"><img src="pictures/mech202.jpg" alt="Description of the image" width=100% height=auto></div>
-      <div class="project-overlay">
-        <a href="#" class="btn-pill btn-fill" target="_blank">Live Site</a>
-        <a href="#" class="btn-pill btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;" target="_blank">GitHub</a>
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-img">
+            <img src="pictures/projects/307wh.jpeg" alt="Forward Vertical Tail" style="width:100%;height:100%;object-fit:cover;">
+          <div class="project-overlay">
+            <a href="project-mech307.html" class="btn-pill btn-fill">View Project</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="ptag">2025</span></div>
+          <h3 class="project-title">MECH 307 Wheel</h3>
+          <p class="project-desc">A wheel design and analysis project from MECH 307, involving CAD modelling and structural analysis.</p>
+        </div>
       </div>
-    </div>
-    <div class="project-body">
-      <div class="project-tags"><span class="ptag">2025</span></div>
-      <h3 class="project-title">MECH 202 Robot</h3>
-      <p class="project-desc">Another great project with a compelling description that shows off your range and technical depth.</p>
-    </div>
-  </div>
 
-  <!-- 6: HS Senior Project — bottom right, wide (matches top left) -->
-  <div class="project-card reveal reveal-delay-2">
-    <div class="project-img">
-      <div class="project-img-ph"><img src="pictures/SP.jpg" alt="Description of the image" width=100% height=auto></div>
-      <div class="project-overlay">
-        <a href="#" class="btn-pill btn-fill" target="_blank">Live Site</a>
-        <a href="#" class="btn-pill btn-outline" style="border-color:rgba(255,255,255,0.3);color:#fff;" target="_blank">GitHub</a>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img">
+          <div class="project-img-ph">
+            <img src="pictures/projects/mech202.jpg" alt="MECH 202 Robot" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="project-overlay">
+            <a href="project-mech202.html" class="btn-pill btn-fill">View Project</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="ptag">2025</span></div>
+          <h3 class="project-title">MECH 202 Robot</h3>
+          <p class="project-desc">Another great project with a compelling description that shows off your range and technical depth.</p>
+        </div>
       </div>
-    </div>
-    <div class="project-body">
-      <div class="project-tags"><span class="ptag">2022</span></div>
-      <h3 class="project-title">High School Senior Project</h3>
-      <p class="project-desc">My first engineering project! For my Senior Year Project in High School, I tasked myself with taking broken drone parts and putting them back together again in a custom designed frame. This project jumpstarted my knowledge on performing CFD analysis, 3D CAD Design, and validating my builds.</p>
-    </div>
-  </div>
 
-</div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-img">
+          <div class="project-img-ph">
+            <img src="pictures/projects/SP.jpg" alt="High School Senior Project" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="project-overlay">
+            <a href="project-hs-senior.html" class="btn-pill btn-fill">View Project</a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="ptag">2022</span></div>
+          <h3 class="project-title">High School Senior Project</h3>
+          <p class="project-desc">My first engineering project — rebuilding broken drone parts into a custom designed frame, kickstarting my skills in CFD and 3D CAD.</p>
+        </div>
+      </div>
+
+    </div>
   </section>
 
-  <!-- EXPERIENCE -->
   <section id="experience" class="section-wrap">
     <div class="exp-grid">
       <div class="exp-left">
         <p class="section-eyebrow reveal">Career</p>
         <h2 class="section-title reveal">Where I've<br><em>Worked</em></h2>
-        <p class="section-subtitle reveal" style="margin-bottom:0;">A track record of shipping quality work across startups, agencies, and established companies.</p>
+        <p class="section-subtitle reveal" style="margin-bottom:0;">Internships and part-time roles that have shaped my engineering perspective.</p>
       </div>
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
           <div class="tl-content">
-            <div class="tl-period">2026</div>
+            <div class="tl-period">2026 — Upcoming</div>
             <div class="tl-role">Engineering Intern</div>
             <div class="tl-company">TTM Technologies · Summer Internship</div>
-            <div class="tl-body">upcoming</div>
-            <div class="tl-pills"><span class="tl-pill">React</span><span class="tl-pill">TypeScript</span><span class="tl-pill">GraphQL</span><span class="tl-pill">AWS</span></div>
+            <div class="tl-body">This is an upcoming role I have for the summer of 2026. I will be supporting the company by validating equipment, developing fixtures to improve workflows, and presenting my work at conferences across the United States.</div>
           </div>
         </div>
         <div class="timeline-item reveal reveal-delay-1">
@@ -461,67 +389,53 @@
             <div class="tl-period">2025</div>
             <div class="tl-role">Quality + Calibration Engineering Intern</div>
             <div class="tl-company">Philips · Summer Internship</div>
-            <div class="tl-body">descr</div>
-            <div class="tl-pills"><span class="tl-pill">Vue.js</span><span class="tl-pill">Node.js</span><span class="tl-pill">PostgreSQL</span><span class="tl-pill">Docker</span></div>
+            <div class="tl-body">I worked a cross-department role where I gained valuable skills including testing and validating fixtures I had designed, purchasing parts, giving company-wide presentations, working with international teams, developing lightweight C# programs, adhering to Class 3 cleanroom policies, writing work instructions, and learning everything required for a Quality Engineering role.</div>
           </div>
         </div>
         <div class="timeline-item reveal reveal-delay-2">
-        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-            <div class="tl-period">2025-Present</div>
+          <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+          <div class="tl-content">
+            <div class="tl-period">2025 — Present</div>
             <div class="tl-role">Community Desk Assistant</div>
             <div class="tl-company">Colorado State University · Part-time</div>
-            <div class="tl-body">descript</div>
-            <div class="tl-pills"><span class="tl-pill">JavaScript</span><span class="tl-pill">Python</span><span class="tl-pill">Django</span><span class="tl-pill">MySQL</span></div>
+            <div class="tl-body">Providing customer service to students and visitors in high traffic environments, key distribution and mail processing, assisting students and staff, leading in emergency scenarios, and making phone inquiries.</div>
+          </div>
         </div>
-      </div>
         <div class="timeline-item reveal reveal-delay-3">
           <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
           <div class="tl-content">
             <div class="tl-period">2024</div>
             <div class="tl-role">Reconditioning Associate I</div>
-            <div class="tl-company">CARMAX · Summer Seasonal Job</div>
-            <div class="tl-body">ff descr</div>
-            <div class="tl-pills"><span class="tl-pill">JavaScript</span><span class="tl-pill">Python</span><span class="tl-pill">Django</span><span class="tl-pill">MySQL</span></div>
+            <div class="tl-company">CARMAX · Summer Seasonal</div>
+            <div class="tl-body">Performing cosmetic vehicle inspections and automotive exterior and interior reconditioning. Required knowledge of chemical cleaners, wet sanding, buffing and polishing, painting, and general cleaning. Promoted to Reconditioning Associate I based on performance, knowledge, capability, and reliability.</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact" class="section-wrap alt">
     <div class="contact-grid">
       <div>
         <p class="section-eyebrow reveal">Get In Touch</p>
-        <h2 class="section-title reveal">Let's build something<br><em>great together.</em></h2>
-        <p class="section-subtitle reveal" style="margin-bottom:0;">I'm open to new opportunities and collaborations. Whether you have a project in mind or just want to say hi — I'd love to hear from you.</p>
+        <h2 class="section-title reveal">Let's connect<br><em>and collaborate.</em></h2>
+        <p class="section-subtitle reveal" style="margin-bottom:0;">I'm open to new opportunities and collaborations. Whether you have an employment opportunity, project in mind, or just want to say hi — I'd like to hear from you.</p>
         <div class="contact-links reveal reveal-delay-1">
-
-    <button onclick="copyEmail()" class="contact-link" id="email-btn">
-      <span id="email-label">perkins4r@gmail.com</span>
-      <span class="contact-link-arrow" id="email-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-        </svg>
-      </span>
-    </button>
-
-    <a href="https://github.com/yourusername" class="contact-link" target="_blank" rel="noopener"><span>GitHub</span><span class="contact-link-arrow">↗</span></a>
-    <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank" rel="noopener"><span>LinkedIn</span><span class="contact-link-arrow">↗</span></a>
-
-
-  </div>
-      <div class="reveal reveal-delay-2">
-        <!-- Test out spacing with px versus percents-->
-        <div style="margin-bottom: 20px;"></div>
-
-
+          <button onclick="copyEmail()" class="contact-link" id="email-btn">
+            <span id="email-label">perkins4r@gmail.com</span>
+            <span class="contact-link-arrow" id="email-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+            </span>
+          </button>
+          <a href="https://www.linkedin.com/in/roger-perkins-78695b211/" class="contact-link" target="_blank" rel="noopener"><span>LinkedIn</span><span class="contact-link-arrow">↗</span></a>
+        </div>
       </div>
+      <div class="reveal reveal-delay-2"></div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <a href="#hero" class="footer-logo">Roger<span>.</span>Perkins</a>
     <p class="footer-copy">© 2026 Roger Perkins — All rights reserved</p>
@@ -529,56 +443,31 @@
   </footer>
 
   <script>
-    // Cursor
     const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top  = e.clientY + 'px';
-    });
+    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
     document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
     document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
-
-    // Nav scroll
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
-
-    // Reveal
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // Clock
     const clockEl = document.getElementById('clock');
     function updateClock() {
       const t = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
       clockEl.innerHTML = '<span class="footer-acc">//</span> ' + t;
     }
     setInterval(updateClock, 1000); updateClock();
-
-    // Copy email
     function copyEmail() {
-  navigator.clipboard.writeText('perkins4r@gmail.com').then(() => {
-    document.getElementById('email-label').textContent = 'Copied!';
-    document.getElementById('email-icon').style.color = 'var(--accent)';
-    setTimeout(() => {
-      document.getElementById('email-label').textContent = 'perkins4r@gmail.com';
-      document.getElementById('email-icon').style.color = '';
-    }, 2000);
-  });
-}
-
-    // Form
-    function handleSend() {
-      const n = document.getElementById('fname').value.trim();
-      const e = document.getElementById('femail').value.trim();
-      const m = document.getElementById('fmsg').value.trim();
-      if (!n || !e || !m) { alert('Please fill in all fields.'); return; }
-      // Add Formspree fetch here
-      document.getElementById('form-status').style.display = 'block';
-      document.getElementById('fname').value = '';
-      document.getElementById('femail').value = '';
-      document.getElementById('fmsg').value = '';
+      navigator.clipboard.writeText('perkins4r@gmail.com').then(() => {
+        document.getElementById('email-label').textContent = 'Copied!';
+        document.getElementById('email-icon').style.color = 'var(--accent)';
+        setTimeout(() => {
+          document.getElementById('email-label').textContent = 'perkins4r@gmail.com';
+          document.getElementById('email-icon').style.color = '';
+        }, 2000);
+      });
     }
   </script>
 </body>
