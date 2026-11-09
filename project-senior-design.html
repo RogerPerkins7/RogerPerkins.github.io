@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Senior Design — Roger Perkins</title>
+  <title>Senior Design - Roger Perkins</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;0,800;0,900;1,800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -57,6 +57,27 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     @media (max-width: 768px) { nav { padding: 1.2rem 1.5rem; } .page-hero { padding: 8rem 1.5rem 3rem; } .content-wrap { padding: 3rem 1.5rem; } .img-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; } }
     @media (max-width: 600px) { .nav-links { display: none; } }
+    /* ── CAROUSEL ── */
+    .carousel-wrap { position: relative; width: 100%; margin: 2rem 0; border-radius: 20px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; background: #1a1a18; }
+    .carousel-viewport { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; position: relative; }
+    .carousel-track { display: flex; height: 100%; transition: transform 0.45s var(--ease); will-change: transform; }
+    .carousel-slide { flex: 0 0 auto; height: 100%; overflow: hidden; }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; -webkit-user-drag: none; }
+    .carousel-slide .ph { width: 100%; height: 100%; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.88); border: none; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.15); transition: background 0.2s, transform 0.18s; padding: 0; }
+    .carousel-btn:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
+    .carousel-btn svg { width: 18px; height: 18px; stroke: var(--dark); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; display: block; }
+    .carousel-btn.prev { left: 14px; }
+    .carousel-btn.next { right: 14px; }
+    .carousel-bar { position: relative; display: flex; align-items: center; background: rgba(49,55,55,0.72); height: 36px; padding: 0 10px 0 0; }
+    .carousel-playpause { flex-shrink: 0; background: none; border: none; padding: 0 10px; height: 100%; display: flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
+    .carousel-playpause:hover { opacity: 0.75; }
+    .carousel-playpause svg { width: 16px; height: 16px; fill: #fff; display: block; }
+    .carousel-progress-track { flex: 1; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; overflow: hidden; }
+    .carousel-progress-fill { height: 100%; width: 0%; background: var(--accent); border-radius: 2px; }
+    .carousel-progress-fill.running { animation: progressFill var(--duration, 18s) linear forwards; }
+    @keyframes progressFill { from { width: 0%; } to { width: 100%; } }
+    @media (max-width: 768px) { .carousel-btn { width: 34px; height: 34px; } }
   </style>
 </head>
 <body>
@@ -84,20 +105,63 @@
 
     <div class="content-section reveal">
       <h2>Overview</h2>
-      <p>My senior capstone project. Add a description of the project, the problem it solves, and your team's approach.</p>
-      <p>Add more detail here about the motivation, research question, or what sparked this project.</p>
+      <p><em>This project is still in progress.</em></p>
+      <p>A senior design capstone project comprising four engineers tasked with improving the safety and performance of a large 3D printer that extrudes pottery clay.</p>
     </div>
 
-    <figure class="img-block reveal">
-      <img src="pictures/projects/3DprinterBEFOREpicture1.webp" alt="Senior Capstone">
-    </figure>
+    <div class="carousel-wrap reveal">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+
+          <div class="carousel-slide">
+            <img src="pictures/projects/clay-printer/clay-1-original-setup.jpg" alt="Original 3D printer setup">
+          </div>
+          <div class="carousel-slide">
+            <img src="pictures/projects/clay-printer/clay-2-pump-meeting.jpg" alt="Team meeting to discuss pump improvements">
+          </div>
+          <div class="carousel-slide">
+            <img src="pictures/projects/clay-printer/clay-3-hose-testing.jpg" alt="Hose clearout testing">
+          </div>
+          <div class="carousel-slide">
+            <img src="pictures/projects/clay-printer/clay-4-closeup-testing.webp" alt="Close-up testing of a clamped printer component" style="object-position: center calc(50% - 45px);">
+          </div>
+          <div class="carousel-slide">
+            <img src="pictures/projects/clay-printer/clay-5-wiring-testing.webp" alt="Testing printer wiring and connections">
+          </div>
+
+        </div>
+
+        <button class="carousel-btn prev" id="prevBtn" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-btn next" id="nextBtn" aria-label="Next photo">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="carousel-bar">
+        <button class="carousel-playpause" id="playPauseBtn" aria-label="Pause slideshow">
+          <svg id="iconPause" viewBox="0 0 24 24" style="display:block;">
+            <rect x="6"  y="4" width="4" height="16" rx="1"/>
+            <rect x="14" y="4" width="4" height="16" rx="1"/>
+          </svg>
+          <svg id="iconPlay" viewBox="0 0 24 24" style="display:none;">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+        </button>
+        <div class="carousel-progress-track">
+          <div class="carousel-progress-fill" id="progressFill"></div>
+        </div>
+        <span class="carousel-counter" id="slideCounter"></span>
+      </div>
+    </div>
 
     <div class="divider"></div>
 
     <div class="content-section reveal">
       <h2>Approach</h2>
-      <p>Add your methodology, design process, testing approach, and any noteworthy results or outcomes.</p>
-      <p>Add your planned methodology, software tools, or testing approach here.</p>
+      <p>The main improvements target the proprietary clay pumping system, where the team plans to reduce friction losses and upgrade motor performance.</p>
+      <p>Miscellaneous improvements include adding end stops for automatic homing, designing hose routing for the clay tubes, adding a clay blowout feature to make cleanup easier, and altering the grounding and connections of the electronics.</p>
     </div>
 
     <div class="divider"></div>
@@ -116,7 +180,7 @@
 
   <footer>
     <a href="index.html" class="footer-logo">Roger<span>.</span>Perkins</a>
-    <p class="footer-copy">© 2026 Roger Perkins — All rights reserved</p>
+    <p class="footer-copy">© 2026 Roger Perkins - All rights reserved</p>
     <p id="clock">Loading...</p>
   </footer>
   <script>
@@ -143,6 +207,107 @@
     const clockEl = document.getElementById('clock');
     function updateClock() { const t = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }); clockEl.innerHTML = '<span class="footer-acc">//</span> ' + t; }
     setInterval(updateClock, 1000); updateClock();
+
+    // ══════════════════════════════════════
+    // CAROUSEL - all in one block, correct order
+    // ══════════════════════════════════════
+    const DURATION = 18; // seconds per slide
+
+    // 1. Grab elements
+    const track     = document.getElementById('carouselTrack');
+    const prevBtn   = document.getElementById('prevBtn');
+    const nextBtn   = document.getElementById('nextBtn');
+    const ppBtn     = document.getElementById('playPauseBtn');
+    const iconPause = document.getElementById('iconPause');
+    const iconPlay  = document.getElementById('iconPlay');
+    const fill      = document.getElementById('progressFill');
+    const counter   = document.getElementById('slideCounter');
+    const viewport  = track.parentElement; // .carousel-viewport
+
+    // 2. State
+    const slides = track.querySelectorAll('.carousel-slide');
+    const total  = slides.length;
+    let current  = 0;
+    let playing  = true;
+    let timer    = null;
+
+    fill.style.setProperty('--duration', DURATION + 's');
+
+    // 3. Size every slide to the viewport's pixel width
+    //    This avoids the percentage-based drift bug entirely
+    function syncWidths() {
+      const w = viewport.offsetWidth;
+      slides.forEach(s => { s.style.width = w + 'px'; });
+      // Reposition without animation so it doesn't fly
+      track.style.transition = 'none';
+      track.style.transform  = 'translateX(-' + (current * w) + 'px)';
+      void track.offsetWidth; // force reflow before re-enabling transition
+      track.style.transition = '';
+    }
+
+    // 4. Navigation
+    function updateCounter() {
+      counter.textContent = (current + 1) + ' / ' + total;
+    }
+
+    function restartProgress() {
+      fill.classList.remove('running');
+      void fill.offsetWidth; // force reflow to restart animation
+      if (playing) fill.classList.add('running');
+    }
+
+    function goTo(index) {
+      current = (index + total) % total;
+      const w = viewport.offsetWidth;
+      track.style.transform = 'translateX(-' + (current * w) + 'px)';
+      updateCounter();
+      clearTimeout(timer);
+      restartProgress();
+      if (playing) scheduleNext();
+    }
+
+    function scheduleNext() {
+      timer = setTimeout(() => goTo(current + 1), DURATION * 1000);
+    }
+
+    // 5. Play / pause
+    function setPlaying(state) {
+      playing = state;
+      iconPause.style.display = playing ? 'block' : 'none';
+      iconPlay.style.display  = playing ? 'none'  : 'block';
+      ppBtn.setAttribute('aria-label', playing ? 'Pause slideshow' : 'Play slideshow');
+      clearTimeout(timer);
+      if (playing) {
+        restartProgress();
+        scheduleNext();
+      } else {
+        // Freeze bar at its current position
+        const filledPx = parseFloat(getComputedStyle(fill).width);
+        const trackPx  = fill.parentElement.offsetWidth;
+        fill.classList.remove('running');
+        fill.style.width = ((filledPx / trackPx) * 100) + '%';
+      }
+    }
+
+    // 6. Event listeners
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+    ppBtn.addEventListener('click',   () => setPlaying(!playing));
+
+    let touchX = 0;
+    track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+      const diff = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+
+    window.addEventListener('resize', syncWidths);
+
+    // 7. Init - syncWidths must run before anything else
+    syncWidths();
+    updateCounter();
+    restartProgress();
+    scheduleNext();
   </script>
 </body>
 </html>
